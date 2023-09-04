@@ -1,15 +1,5 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import { projects } from "../../public/projects";
-interface Student {
-	title: string;
-	description: string;
-	authors: { name: string; github: string }[];
-	url: string;
-	source: string;
-}
-const dataset = {
+const dataset: Record<string, string[]> = {
 	q: ["Quantum", "Quantitive", "Query"],
 	a: ["Async", "Automatic", "Autonomous"],
 	w: ["Wild", "Wobbely", "Wired"],
@@ -20,109 +10,64 @@ const dataset = {
 const acronym = Object.keys(dataset).map(
 	(key) => dataset[key][Math.floor(Math.random() * dataset[key].length)],
 ); //?
-// const createStudent = () => {
-// 	return {
-// 		title: faker.word.noun(),
-// 		description: faker.lorem.paragraph(),
-// 		authors: [{
-// 			name: faker.internet.userName(),
-// 			github: faker.internet.emoji()
-// 		}, {
-// 			name: faker.internet.userName(),
-// 			github: faker.internet.emoji()
-// 		}],
-// 		source: "https://github.com/ff6347",
-// 		url: faker.internet.url(),
-// 	}
-
-// }
-// const projects: Student[] = [];
-// for (let i = 0; i < 10; i++) {
-// 	projects.push(createStudent());
-// }
 ---
 
-<Layout title="q.a.w.s.e.d.site">
-	<div class="overlay text-8xl font-black">
-		<div class="overlay-content"></div>
-	</div>
-	<main class="p-4">
-		<h1 class="text-2xl pb-1">
-			Welcome to <span class="text-gradient">qawsed.site</span>
-		</h1>
-		<h2 class="text-xl font-semibold pb-5">The: {acronym.join(" ")}</h2>
-		<p class="tagline">
-			Totally inspired by <a class="" href="https://tholman.com/">Tim Holmans</a
-			>
-			<a class="" href="https://theuselessweb.com/">"The Useless Web"</a>
-		</p>
-		<div class="link-card-grid">
-			{
-				projects.map((project) => (
-					<Card
-						title={project.title}
-						body={project.description}
-						href={project.url}
-						authors={project.authors}
-						source={project.source}
-					/>
-				))
-			}
-		</div>
-	</main>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>q.a.w.s.e.d.site</title>
+	</head>
+	<body>
+		<main>
+			<h1 class="text-2xl pb-1">
+				Welcome to <span class="text-gradient">qawsed.site</span>
+			</h1>
+			<h2 class="text-xl font-semibold pb-5">The: {acronym.join(" ")}</h2>
+			<p>
+				Hello my name is Fabian Morón Zirfas I am a Creative Technologist and
+				educator living in Berlin who occasionally does stuff that involves
+				things. Have a look around. See <a href="https://inpyjamas.dev/"
+					>https://inpyjamas.dev/</a
+				>, <a href="https://fabianmoronzirfas.me/"
+					>https://fabianmoronzirfas.me/</a
+				>, <a href="https://github.com/ff6347">https://github.com/ff6347</a>, <a
+					href="https://citylab-berlin.org">https://citylab-berlin.org</a
+				>, <a href="https://ts.berlin/">https://ts.berlin/</a>, soon <a
+					href="https://www.hbk-bs.de/">https://www.hbk-bs.de/</a
+				>, ex <a href="https://www.hbk-bs.de/">https://www.hbk-bs.de/</a>, ex <a
+					href="https://www.fh-potsdam.de/studium-weiterbildung/studiengaenge/interfacedesign-b"
+					>https://interface.fh-potsdam.de</a
+				>
+			</p>
+		</main>
+	</body>
+</html>
 
-	<script is:inline>
-		document.addEventListener("DOMContentLoaded", () => {
-			const overlay = document.querySelector(".overlay-content");
-			const countdown = [5, 4, 3, "▲", "△", "<⤵︎>", "Ready?", "GO!", "Now!!"];
-			let counter = 0;
-			const interval = setInterval(() => {
-				const content = countdown[counter];
-				overlay.innerText = content;
-				counter++;
-				if (counter === countdown.length) {
-					clearInterval(interval);
-				}
-			}, 500);
-			setTimeout(() => {
-				const overlay = document.querySelector(".overlay");
-				overlay.remove();
-			}, 5000);
-		});
-	</script>
-	<script is:inline>
-		document.addEventListener("DOMContentLoaded", () => {
-			const gridElements = document.querySelector(".link-card-grid");
-			for (let i = gridElements.length - 1; i >= 0; i--) {
-				gridElements.appendChild(gridElements.chldren[(Math.random() * i) | 0]);
-			}
-		});
-	</script>
-	<script is:inline>
-		document.addEventListener("DOMContentLoaded", () => {
-			const borderThinElements = document.querySelectorAll(".line-thin");
-			console.log(borderThinElements);
-			for (let i = borderThinElements.length - 1; i >= 0; i--) {
-				const r1 = 10 + Math.random() * 100;
-				const r2 = 200 + Math.random() * 50;
-				const r3 = 100 + Math.random() * 100;
-				borderThinElements[
-					i
-				].style.borderRadius = `${r2}px ${r1}px ${r3}px ${r1}px/${r1}px ${r3}px ${r1}px ${r2}px`;
-			}
-		});
-	</script>
-</Layout>
 <style>
-	h1 {
-		margin: 2rem 0 0 0;
-	}
-	main {
-		margin: 0 auto;
-		/* padding: 1em; */
-		max-width: 80ch;
-	}
+	:root {
+		--pink-lace: #f2d7eeff;
+		--yellow-green: #85cb33ff;
+		--dark-purple: #27233aff;
+		--red-crayola: #ec0b43ff;
+		--sizzling-red: #e84855ff;
 
+		--primary-color: var(--red-crayola);
+		--secondary-color: var(--yellow-green);
+		--primary-gradient: linear-gradient(
+			0deg,
+			var(--primary-color),
+			var(--secondary-color)
+		);
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		font-family: Avenir, Montserrat, Corbel, "URW Gothic", source-sans-pro,
+			sans-serif;
+	}
 	.text-gradient {
 		font-weight: 900;
 		background-image: var(--primary-gradient);
@@ -133,68 +78,13 @@ const acronym = Object.keys(dataset).map(
 		border-radius: 0.4rem;
 		animation: pulse 4s ease-in-out infinite;
 	}
-
-	.overlay {
-		background-color: white; /*var(--text-on-dark-color);*/
-		width: 100%;
-		height: 100%;
-		z-index: 10;
-		top: 0;
-		left: 0;
-		position: fixed;
-		animation: fadeout 0.1s ease-in 5s forwards;
-		animation-fill-mode: forwards;
+	main {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
-	}
-	.overlay-content {
-		align-self: center;
-	}
-	@keyframes fadeout {
-		to {
-			opacity: 0;
-			/* width:0;
-        height:0;
-        overflow:hidden; */
-		}
-	}
-	@keyframes pulse {
-		0%,
-		100% {
-			background-position-y: 0%;
-		}
-
-		50% {
-			background-position-y: 80%;
-		}
-	}
-
-	.instructions {
-		line-height: 1.6;
-		margin: 1rem 0;
-		background: var(--primary-color);
-		padding: 1rem;
-		border-radius: 0.4rem;
-		color: var(--color-bg);
-	}
-	.tagline {
-		padding-bottom: 2.5rem;
-	}
-
-	.instructions code {
-		font-size: 0.875em;
-		border: 0.1em solid var(--color-border);
-		border-radius: 4px;
-		padding: 0.15em 0.25em;
-	}
-
-	.link-card-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
-		gap: 1rem;
-		padding: 0;
-	}
-	a {
-		text-decoration: underline;
+		align-items: center;
+		height: 100vh;
+		max-width: 50%;
+		margin: 0 auto;
 	}
 </style>
