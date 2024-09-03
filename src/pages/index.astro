@@ -1,15 +1,5 @@
 ---
-const dataset: Record<string, string[]> = {
-  q: ['Quantum', 'Quantitive', 'Query'],
-  a: ['Async', 'Automatic', 'Autonomous'],
-  w: ['Wild', 'Wobbely', 'Wired'],
-  s: ['Supercharge', 'Steroids', 'Simple'],
-  e: ['Explore', 'Endangered'],
-  d: ['Documentation'],
-};
-const acronym = Object.keys(dataset).map(
-  (key) => dataset[key][Math.floor(Math.random() * dataset[key].length)],
-); //?
+
 ---
 
 <html lang="en">
@@ -25,7 +15,7 @@ const acronym = Object.keys(dataset).map(
       <h1 class="text-2xl pb-1">
         Welcome to <span class="text-gradient">qawsed.site</span>
       </h1>
-      <h2 class="text-xl font-semibold pb-5">The: {acronym.join(' ')}</h2>
+      <h2 class="text-xl font-semibold pb-5" id="acronym"></h2>
       <p>
         Hello my name is Fabian Morón Zirfas I am a Creative Technologist and
         educator living in Berlin who occasionally does stuff that involves
@@ -43,18 +33,51 @@ const acronym = Object.keys(dataset).map(
         >
       </p>
       <p>
-        Here are some student projects at <a href="https://hawk22.qawsed.site/">
-          Useless Websites @ HAWK Hildesheim in 2022</a
-        >, <a href="https://rundgang2024.qawsed.site/"
-          >Rundgang @ HBK Braunschweig in 2024</a
-        > and <a href="https://gestalten-in-code.qawsed.site/"
-          >Gestalten In Code @ FH Potsdam in 2016(-ish)</a
-        >, <a href="https://prototyping-machines.qawsed.site/"
-          >Prototyping Machines @ FH-Potsdam in 2017</a
-        >.
+        Here are some student projects:
+        <ul>
+          <li>
+            <a href="https://rundgang2024.qawsed.site/"
+              >Rundgang @ HBK Braunschweig in 2024</a
+            >
+          </li>
+          <li>
+            <a href="https://hawk22.qawsed.site/">
+              Useless Websites @ HAWK Hildesheim in 2022</a
+            >
+          </li>
+          <li>
+            <a href="https://prototyping-machines.qawsed.site/"
+              >Prototyping Machines @ FH-Potsdam in 2017</a
+            >
+          </li>
+          <li>
+            <a href="https://gestalten-in-code.qawsed.site/"
+              >Gestalten In Code @ FH Potsdam in 2016(~ish)</a
+            >
+          </li>
+          <li>
+            <a href="https://eingabe-ausgabe.qawsed.site/"
+              >Eingabe Ausgabe @ FH Potsdam in 2015(~ish)</a
+            >
+          </li>
+        </ul>
       </p>
     </main>
   </body>
+  <script is:inline>
+    const dataset = {
+      q: ['Quantum', 'Quantitive', 'Query'],
+      a: ['Async', 'Automatic', 'Autonomous'],
+      w: ['Wild', 'Wobbely', 'Wired'],
+      s: ['Supercharge', 'Steroids', 'Simple'],
+      e: ['Explore', 'Endangered'],
+      d: ['Documentation'],
+    };
+    const acronym = Object.keys(dataset).map(
+      (key) => dataset[key][Math.floor(Math.random() * dataset[key].length)],
+    );
+    document.getElementById('acronym').textContent = acronym.join(' ');
+  </script>
 </html>
 
 <style>
