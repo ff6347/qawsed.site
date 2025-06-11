@@ -12,10 +12,10 @@
 	</head>
 	<body>
 		<main>
-			<h1 class="text-2xl pb-1">
+			<h1>
 				Welcome to <span class="text-gradient">qawsed.site</span>
 			</h1>
-			<h2 class="text-xl font-semibold pb-5" id="acronym"></h2>
+			<h2 id="acronym"></h2>
 			<p>
 				Hello my name is Fabian Morón Zirfas I am a Creative Technologist and
 				educator living in Berlin who occasionally does stuff that involves
@@ -142,6 +142,11 @@
 		font-family: Avenir, Montserrat, Corbel, 'URW Gothic', source-sans-pro,
 			sans-serif;
 	}
+
+	html,
+	body {
+		height: 100%;
+	}
 	.text-gradient {
 		font-weight: 900;
 		background-image: var(--primary-gradient);
@@ -152,17 +157,25 @@
 		border-radius: 0.4rem;
 		animation: pulse 4s ease-in-out infinite;
 	}
+
+	body {
+		display: flex;
+		flex-direction: column;
+	}
 	main {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
+		flex: 1;
 		padding: 2rem 1rem;
 		margin: 0 auto;
 	}
 	p {
 		max-width: 80ch;
 		padding-top: 2rem;
+	}
+	ul {
+		padding-left: 1rem;
 	}
 </style>
